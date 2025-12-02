@@ -7,9 +7,33 @@ y este proyecto adhiere a [Versionado Semántico](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Por Agregar
+- Funcionalidades futuras pendientes
+
+## [1.0.1] - 2025-12-02
+
 ### Agregado
-- Keyword "Capturar Pantalla Manual" en Navegador.robot para capturas con nombre personalizado
-- Capturas manuales en flujos de login (login_exitoso.png, login_fallido.png)
+- **README.md profesional enterprise** con documentación completa
+  - Badges profesionales (Build Status, License, Python Version, Robot Framework)
+  - Tabla de contenidos navegable con enlaces internos
+  - Arquitectura detallada del proyecto con explicación de capas
+  - Guía de instalación paso a paso con verificación
+  - Comandos de ejecución básicos y avanzados con ejemplos
+  - Documentación de configuración Chrome incógnito optimizada
+  - Explicación completa de reportería nativa con capturas
+  - Ejemplo real de flujo automatizado (LoginFlow)
+  - Roadmap detallado con 5 fases planificadas
+  - Enlaces a CONTRIBUTING.md y documentación de soporte
+  - Licencia MIT completa
+
+- **Funcionalidades de captura mejoradas**
+  - Keyword "Capturar Pantalla Manual" en Navegador.robot para capturas con nombre personalizado
+  - Capturas manuales en flujos de login (login_exitoso.png, login_fallido.png)
+
+### Mejorado
+- Documentación del proyecto transformada a estándar enterprise
+- Experiencia de desarrollador mejorada con guías claras
+- Navegación interna del README con tabla de contenidos
 
 ## [1.0.0] - 2025-11-26
 
