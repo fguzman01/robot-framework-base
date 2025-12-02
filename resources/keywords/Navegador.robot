@@ -18,3 +18,8 @@ Abrir Navegador Una Vez
 
 Cerrar Navegador
     Close Browser
+
+Capturar Pantalla Manual
+    [Arguments]    ${nombre}=None
+    Run Keyword If    '${nombre}' == 'None'    Capture Page Screenshot
+    ...               ELSE    Capture Page Screenshot    ${nombre}

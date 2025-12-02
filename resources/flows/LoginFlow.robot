@@ -13,6 +13,7 @@ Realizar Login Exitoso
     Ingresar Contraseña     ${password}
     Hacer Click En Login
     Esperar Que Inventory Esté Lista
+    Capturar Pantalla Manual    login_exitoso.png
 
 Realizar Login Fallido
     [Arguments]    ${usuario}    ${password}    ${mensaje_esperado}
@@ -21,3 +22,4 @@ Realizar Login Fallido
     Ingresar Contraseña     ${password}
     Hacer Click En Login
     Validar Mensaje De Error    ${mensaje_esperado}
+    Capturar Pantalla Manual    login_fallido.png
