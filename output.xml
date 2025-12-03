@@ -1,383 +1,393 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.3.2 (Python 3.11.9 on win32)" generated="2025-12-02T16:49:24.311001" rpa="false" schemaversion="5">
-<suite id="s1" name="Inventory Tests" source="C:\Users\felip\OneDrive\Documentos\Escritorio\fguzman\proyectos\robot-framework\tests\inventory\inventory_tests.robot">
-<kw name="Suite Setup Inventory" type="SETUP">
-<kw name="Abrir Navegador Una Vez" owner="Navegador">
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2025-12-02T16:49:24.566812" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000002960CFF8310&gt;</msg>
-<var>${chrome_options}</var>
-<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
-<arg>sys, selenium.webdriver</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2025-12-02T16:49:24.566812" elapsed="0.000000"/>
+<robot generator="Robot 7.3.2 (Python 3.11.9 on win32)" generated="2025-12-03T16:29:14.466759" rpa="false" schemaversion="5">
+<suite id="s1" name="Users Api Tests" source="C:\Users\felip\OneDrive\Documentos\Escritorio\fguzman\proyectos\robot-framework\tests\api\users_api_tests.robot">
+<test id="s1-t1" name="Crear Post Y Validarlo" line="6">
+<kw name="Log To Console" owner="BuiltIn">
+<arg>🔄 Iniciando creación de post via API...</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-03T16:29:14.766996" elapsed="0.000000"/>
 </kw>
-<kw name="Call Method" owner="BuiltIn">
-<arg>${chrome_options}</arg>
-<arg>add_argument</arg>
-<arg>--incognito</arg>
-<doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-12-02T16:49:24.566812" elapsed="0.000000"/>
+<kw name="Crear Post Y Validar Respuesta" owner="UsersAPIFlow">
+<kw name="Crear Post" owner="UsersAPI">
+<kw name="Crear Sesion API" owner="UsersAPI">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-12-03T16:29:14.769039" level="INFO">Creating Session using : alias=jsonplaceholder, url=https://jsonplaceholder.typicode.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>jsonplaceholder</arg>
+<arg>${API_BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-12-03T16:29:14.768501" elapsed="0.000538"/>
 </kw>
-<kw name="Call Method" owner="BuiltIn">
-<arg>${chrome_options}</arg>
-<arg>add_argument</arg>
-<arg>--disable-save-password-bubble</arg>
-<doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-12-02T16:49:24.566812" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-03T16:29:14.768501" elapsed="0.000538"/>
 </kw>
-<kw name="Call Method" owner="BuiltIn">
-<arg>${chrome_options}</arg>
-<arg>add_argument</arg>
-<arg>--disable-extensions</arg>
-<doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-12-02T16:49:24.567812" elapsed="0.000000"/>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-12-03T16:29:14.769039" level="INFO">&amp;{payload} = { title=Mi Titulo | body=Mi Contenido | userId=1 }</msg>
+<var>&amp;{payload}</var>
+<arg>title=${title}</arg>
+<arg>body=${body}</arg>
+<arg>userId=${user_id}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-12-03T16:29:14.769039" elapsed="0.000000"/>
 </kw>
-<kw name="Call Method" owner="BuiltIn">
-<arg>${chrome_options}</arg>
-<arg>add_argument</arg>
-<arg>--disable-infobars</arg>
-<doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-12-02T16:49:24.567812" elapsed="0.000000"/>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2025-12-03T16:29:15.305215" level="INFO">POST Request : url=https://jsonplaceholder.typicode.com/posts 
+ path_url=/posts 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '61', 'Content-Type': 'application/json'} 
+ body=b'{"title": "Mi Titulo", "body": "Mi Contenido", "userId": "1"}' 
+ </msg>
+<msg time="2025-12-03T16:29:15.305215" level="INFO">POST Response : url=https://jsonplaceholder.typicode.com/posts 
+ status=201, reason=Created 
+ headers={'Date': 'Wed, 03 Dec 2025 19:29:15 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '82', 'Connection': 'keep-alive', 'access-control-allow-credentials': 'true', 'access-control-expose-headers': 'Location', 'Cache-Control': 'no-cache', 'etag': 'W/"52-xgSalzox3G/tf/z7+8/Tc/HIq0c"', 'expires': '-1', 'location': 'https://jsonplaceholder.typicode.com/posts/101', 'nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'pragma': 'no-cache', 'report-to': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=mLilBi2BpgCFspOWgVRS6gxPjzWQp6I217TlY9Rs5bo%3D\\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\\u0026ts=1764790155"}],"max_age":3600}', 'reporting-endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=mLilBi2BpgCFspOWgVRS6gxPjzWQp6I217TlY9Rs5bo%3D&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;ts=1764790155"', 'Server': 'cloudflare', 'vary': 'Origin, X-HTTP-Method-Override, Accept-Encoding', 'via': '2.0 heroku-router', 'x-content-type-options': 'nosniff', 'x-powered-by': 'Express', 'x-ratelimit-limit': '1000', 'x-ratelimit-remaining': '998', 'x-ratelimit-reset': '1764790185', 'cf-cache-status': 'DYNAMIC', 'CF-RAY': '9a8578c45d7a1927-GRU', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={
+  "title": "Mi Titulo",
+  "body": "Mi Contenido",
+  "userId": "1",
+  "id": 101
+} 
+ </msg>
+<msg time="2025-12-03T16:29:15.305215" level="INFO">C:\Users\felip\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'jsonplaceholder.typicode.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-12-03T16:29:15.305215" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>jsonplaceholder</arg>
+<arg>/posts</arg>
+<arg>json=${payload}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-12-03T16:29:14.769039" elapsed="0.536176"/>
 </kw>
-<kw name="Call Method" owner="BuiltIn">
-<arg>${chrome_options}</arg>
-<arg>add_argument</arg>
-<arg>--disable-notifications</arg>
-<doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-12-02T16:49:24.567812" elapsed="0.000000"/>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-12-03T16:29:15.305215" elapsed="0.001001"/>
 </kw>
-<kw name="Call Method" owner="BuiltIn">
-<arg>${chrome_options}</arg>
-<arg>add_argument</arg>
-<arg>--no-first-run</arg>
-<doc>Calls the named method of the given object with the provided arguments.</doc>
-<status status="PASS" start="2025-12-02T16:49:24.567812" elapsed="0.000000"/>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-12-03T16:29:15.306216" level="INFO">${json} = {'title': 'Mi Titulo', 'body': 'Mi Contenido', 'userId': '1', 'id': 101}</msg>
+<var>${json}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-12-03T16:29:15.306216" elapsed="0.000000"/>
 </kw>
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-12-02T16:49:24.567812" level="INFO">Opening browser 'chrome' to base url 'https://www.saucedemo.com/'.</msg>
-<arg>${BASE_URL}</arg>
-<arg>chrome</arg>
-<arg>options=${chrome_options}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-12-02T16:49:24.567812" elapsed="2.028527"/>
+<return>
+<value>${json}</value>
+<status status="PASS" start="2025-12-03T16:29:15.307226" elapsed="0.000000"/>
+</return>
+<msg time="2025-12-03T16:29:15.307226" level="INFO">${json} = {'title': 'Mi Titulo', 'body': 'Mi Contenido', 'userId': '1', 'id': 101}</msg>
+<var>${json}</var>
+<arg>${title}</arg>
+<arg>${body}</arg>
+<arg>${user_id}</arg>
+<status status="PASS" start="2025-12-03T16:29:14.768501" elapsed="0.538725"/>
 </kw>
-<kw name="Maximize Browser Window" owner="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-12-02T16:49:26.596339" elapsed="0.029082"/>
+<kw name="Dictionary Should Contain Value" owner="Collections">
+<arg>${json}</arg>
+<arg>${title}</arg>
+<doc>Fails if ``value`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2025-12-03T16:29:15.307226" elapsed="0.000000"/>
 </kw>
-<status status="PASS" start="2025-12-02T16:49:24.565809" elapsed="2.059612"/>
+<kw name="Dictionary Should Contain Value" owner="Collections">
+<arg>${json}</arg>
+<arg>${body}</arg>
+<doc>Fails if ``value`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2025-12-03T16:29:15.307226" elapsed="0.000000"/>
 </kw>
-<kw name="Realizar Login Exitoso" owner="LoginFlow">
-<kw name="Abrir Página De Login" owner="LoginPage">
-<kw name="Go To" owner="SeleniumLibrary">
-<msg time="2025-12-02T16:49:26.625421" level="INFO">Opening url 'https://www.saucedemo.com/'</msg>
-<arg>${LOGIN_URL}</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2025-12-02T16:49:26.625421" elapsed="0.053898"/>
+<kw name="Dictionary Should Contain Value" owner="Collections">
+<arg>${json}</arg>
+<arg>${user_id}</arg>
+<doc>Fails if ``value`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2025-12-03T16:29:15.307226" elapsed="0.000000"/>
 </kw>
-<kw name="Esperar Que La Página De Login Esté Lista" owner="LoginPage">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${USERNAME_FIELD}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-12-02T16:49:26.679319" elapsed="0.021177"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${PASSWORD_FIELD}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-12-02T16:49:26.701496" elapsed="0.009715"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${LOGIN_BUTTON}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-12-02T16:49:26.711211" elapsed="0.009005"/>
-</kw>
-<status status="PASS" start="2025-12-02T16:49:26.679319" elapsed="0.040897"/>
-</kw>
-<status status="PASS" start="2025-12-02T16:49:26.625421" elapsed="0.094795"/>
-</kw>
-<kw name="Ingresar Usuario" owner="LoginPage">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${USERNAME_FIELD}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-12-02T16:49:26.721213" elapsed="0.006998"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-12-02T16:49:26.728211" level="INFO">Typing text 'standard_user' into text field 'id=user-name'.</msg>
-<arg>${USERNAME_FIELD}</arg>
-<arg>${usuario}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-12-02T16:49:26.728211" elapsed="0.079681"/>
-</kw>
-<arg>${usuario}</arg>
-<status status="PASS" start="2025-12-02T16:49:26.720216" elapsed="0.087676"/>
-</kw>
-<kw name="Ingresar Contraseña" owner="LoginPage">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${PASSWORD_FIELD}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-12-02T16:49:26.808925" elapsed="0.007461"/>
-</kw>
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2025-12-02T16:49:26.816386" level="INFO">Typing text 'secret_sauce' into text field 'id=password'.</msg>
-<arg>${PASSWORD_FIELD}</arg>
-<arg>${password}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2025-12-02T16:49:26.816386" elapsed="0.041700"/>
-</kw>
-<arg>${password}</arg>
-<status status="PASS" start="2025-12-02T16:49:26.808925" elapsed="0.050161"/>
-</kw>
-<kw name="Hacer Click En Login" owner="LoginPage">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${LOGIN_BUTTON}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-12-02T16:49:26.859086" elapsed="0.007006"/>
-</kw>
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-12-02T16:49:26.867091" level="INFO">Clicking button 'id=login-button'.</msg>
-<arg>${LOGIN_BUTTON}</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-12-02T16:49:26.867091" elapsed="0.058315"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-12-02T16:49:31.925445" level="INFO">Slept 5 seconds.</msg>
-<arg>5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-12-02T16:49:26.925406" elapsed="5.000039"/>
-</kw>
-<status status="PASS" start="2025-12-02T16:49:26.859086" elapsed="5.066359"/>
-</kw>
-<kw name="Esperar Que Inventory Esté Lista" owner="InventoryPage">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${INVENTORY_TITLE}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-12-02T16:49:31.925445" elapsed="0.010933"/>
-</kw>
-<kw name="Element Text Should Be" owner="SeleniumLibrary">
-<msg time="2025-12-02T16:49:31.937194" level="INFO">Verifying element 'css=.title' contains exact text 'Products'.</msg>
-<arg>${INVENTORY_TITLE}</arg>
-<arg>Products</arg>
-<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<status status="PASS" start="2025-12-02T16:49:31.936378" elapsed="0.000816"/>
-</kw>
-<status status="PASS" start="2025-12-02T16:49:31.925445" elapsed="0.011749"/>
-</kw>
-<kw name="Capturar Pantalla Manual" owner="Navegador">
-<kw name="Run Keyword If" owner="BuiltIn">
-<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
-<msg time="2025-12-02T16:49:32.147854" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="login_exitoso.png"&gt;&lt;img src="login_exitoso.png" width="800px"&gt;&lt;/a&gt;</msg>
-<arg>${nombre}</arg>
-<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<status status="PASS" start="2025-12-02T16:49:31.937194" elapsed="0.210660"/>
-</kw>
-<arg>'${nombre}' == 'None'</arg>
-<arg>Capture Page Screenshot</arg>
-<arg>ELSE</arg>
-<arg>Capture Page Screenshot</arg>
-<arg>${nombre}</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2025-12-02T16:49:31.937194" elapsed="0.210660"/>
-</kw>
-<arg>login_exitoso.png</arg>
-<status status="PASS" start="2025-12-02T16:49:31.937194" elapsed="0.210660"/>
-</kw>
-<arg>${USUARIO_VALIDO}</arg>
-<arg>${PASSWORD_VALIDA}</arg>
-<status status="PASS" start="2025-12-02T16:49:26.625421" elapsed="5.522433"/>
-</kw>
-<status status="PASS" start="2025-12-02T16:49:24.565809" elapsed="7.582045"/>
-</kw>
-<test id="s1-t1" name="Agregar Productos Y Validar Badge" line="17">
-<kw name="Agregar Productos" owner="InventoryFlow">
-<kw name="Agregar Primeros Tres Productos Al Carrito" owner="InventoryPage">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${ADD_TO_CART_BUTTONS}[0]</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-12-02T16:49:32.147854" elapsed="0.014805"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-12-02T16:49:32.163660" level="INFO">Clicking element 'css=button[data-test="add-to-cart-sauce-labs-backpack"]'.</msg>
-<arg>${ADD_TO_CART_BUTTONS}[0]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-12-02T16:49:32.163660" elapsed="0.035706"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${ADD_TO_CART_BUTTONS}[1]</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-12-02T16:49:32.200366" elapsed="0.009997"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-12-02T16:49:32.211365" level="INFO">Clicking element 'css=button[data-test="add-to-cart-sauce-labs-bike-light"]'.</msg>
-<arg>${ADD_TO_CART_BUTTONS}[1]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-12-02T16:49:32.210363" elapsed="0.026493"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${ADD_TO_CART_BUTTONS}[2]</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-12-02T16:49:32.236856" elapsed="0.007144"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-12-02T16:49:32.244000" level="INFO">Clicking element 'css=button[data-test="add-to-cart-sauce-labs-bolt-t-shirt"]'.</msg>
-<arg>${ADD_TO_CART_BUTTONS}[2]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-12-02T16:49:32.244000" elapsed="0.036179"/>
-</kw>
-<status status="PASS" start="2025-12-02T16:49:32.147854" elapsed="0.132325"/>
+<return>
+<value>${json}</value>
+<status status="PASS" start="2025-12-03T16:29:15.307226" elapsed="0.000000"/>
+</return>
+<msg time="2025-12-03T16:29:15.307226" level="INFO">${json} = {'title': 'Mi Titulo', 'body': 'Mi Contenido', 'userId': '1', 'id': 101}</msg>
+<var>${json}</var>
+<arg>Mi Titulo</arg>
+<arg>Mi Contenido</arg>
+<arg>1</arg>
+<status status="PASS" start="2025-12-03T16:29:14.766996" elapsed="0.540230"/>
 </kw>
 <kw name="Log To Console" owner="BuiltIn">
-<arg>✅ Se agregaron los 3 productos al carrito</arg>
+<arg>✅ Post creado correctamente con ID: ${json['id']}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-12-02T16:49:32.280179" elapsed="0.000000"/>
-</kw>
-<kw name="Validar Cantidad En Carrito" owner="InventoryPage">
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${CART_BADGE}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-12-02T16:49:32.280179" elapsed="0.011093"/>
-</kw>
-<kw name="Element Text Should Be" owner="SeleniumLibrary">
-<msg time="2025-12-02T16:49:32.291272" level="INFO">Verifying element 'css=span.shopping_cart_badge' contains exact text '3'.</msg>
-<arg>${CART_BADGE}</arg>
-<arg>${cantidad_esperada}</arg>
-<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<status status="PASS" start="2025-12-02T16:49:32.291272" elapsed="0.007995"/>
-</kw>
-<arg>3</arg>
-<status status="PASS" start="2025-12-02T16:49:32.280179" elapsed="0.019088"/>
+<status status="PASS" start="2025-12-03T16:29:15.308233" elapsed="0.000000"/>
 </kw>
 <kw name="Log To Console" owner="BuiltIn">
-<arg>✅ Validación exitosa: Badge del carrito muestra "3"</arg>
+<arg>✅ Título validado: '${json['title']}'</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-12-02T16:49:32.299267" elapsed="0.000000"/>
-</kw>
-<kw name="Capturar Pantalla Manual" owner="Navegador">
-<kw name="Run Keyword If" owner="BuiltIn">
-<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
-<msg time="2025-12-02T16:49:32.483335" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="productos_agregados.png"&gt;&lt;img src="productos_agregados.png" width="800px"&gt;&lt;/a&gt;</msg>
-<arg>${nombre}</arg>
-<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<status status="PASS" start="2025-12-02T16:49:32.300268" elapsed="0.183067"/>
-</kw>
-<arg>'${nombre}' == 'None'</arg>
-<arg>Capture Page Screenshot</arg>
-<arg>ELSE</arg>
-<arg>Capture Page Screenshot</arg>
-<arg>${nombre}</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2025-12-02T16:49:32.300268" elapsed="0.183067"/>
-</kw>
-<arg>productos_agregados.png</arg>
-<status status="PASS" start="2025-12-02T16:49:32.299267" elapsed="0.184068"/>
-</kw>
-<status status="PASS" start="2025-12-02T16:49:32.147854" elapsed="0.335481"/>
-</kw>
-<kw name="Ir Al Carrito Y Validar" owner="InventoryFlow">
-<kw name="Abrir Carrito" owner="InventoryPage">
-<kw name="Log To Console" owner="BuiltIn">
-<arg>🛒 Abriendo carrito de compras...</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-12-02T16:49:32.485340" elapsed="0.000000"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${CART_ICON}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-12-02T16:49:32.485340" elapsed="0.011543"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2025-12-02T16:49:32.497886" level="INFO">Clicking element 'css=a.shopping_cart_link'.</msg>
-<arg>${CART_ICON}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-12-02T16:49:32.497886" elapsed="0.042030"/>
+<status status="PASS" start="2025-12-03T16:29:15.308233" elapsed="0.000999"/>
 </kw>
 <kw name="Log To Console" owner="BuiltIn">
-<arg>✅ Carrito abierto exitosamente</arg>
+<arg>✅ Contenido validado: '${json['body']}'</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-12-02T16:49:32.539916" elapsed="0.000993"/>
-</kw>
-<status status="PASS" start="2025-12-02T16:49:32.485340" elapsed="0.055569"/>
-</kw>
-<kw name="Validar Que Cart Esté Lista" owner="CartPage">
-<kw name="Log To Console" owner="BuiltIn">
-<arg>🛒 Validando página del carrito...</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-12-02T16:49:32.540909" elapsed="0.000000"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${CART_TITLE}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-12-02T16:49:32.540909" elapsed="0.011000"/>
-</kw>
-<kw name="Element Text Should Be" owner="SeleniumLibrary">
-<msg time="2025-12-02T16:49:32.552911" level="INFO">Verifying element 'css=span[data-test="title"]' contains exact text 'Your Cart'.</msg>
-<arg>${CART_TITLE}</arg>
-<arg>Your Cart</arg>
-<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<status status="PASS" start="2025-12-02T16:49:32.551909" elapsed="0.010039"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${CHECKOUT_BUTTON}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2025-12-02T16:49:32.561948" elapsed="0.011625"/>
-</kw>
-<kw name="Element Should Be Enabled" owner="SeleniumLibrary">
-<arg>${CHECKOUT_BUTTON}</arg>
-<doc>Verifies that element identified by ``locator`` is enabled.</doc>
-<status status="PASS" start="2025-12-02T16:49:32.574572" elapsed="0.009997"/>
+<status status="PASS" start="2025-12-03T16:29:15.309232" elapsed="0.001001"/>
 </kw>
 <kw name="Log To Console" owner="BuiltIn">
-<arg>✅ Página del carrito lista - Título y botón Checkout validados</arg>
+<arg>✅ Usuario ID validado: ${json['userId']}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" start="2025-12-02T16:49:32.585570" elapsed="0.000000"/>
+<status status="PASS" start="2025-12-03T16:29:15.310233" elapsed="0.000487"/>
 </kw>
-<status status="PASS" start="2025-12-02T16:49:32.540909" elapsed="0.044661"/>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>🎯 Test API completado exitosamente</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-03T16:29:15.310720" elapsed="0.000000"/>
 </kw>
-<kw name="Capturar Pantalla Manual" owner="Navegador">
-<kw name="Run Keyword If" owner="BuiltIn">
-<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
-<msg time="2025-12-02T16:49:32.738910" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="carrito_abierto.png"&gt;&lt;img src="carrito_abierto.png" width="800px"&gt;&lt;/a&gt;</msg>
-<arg>${nombre}</arg>
-<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<status status="PASS" start="2025-12-02T16:49:32.586569" elapsed="0.152341"/>
-</kw>
-<arg>'${nombre}' == 'None'</arg>
-<arg>Capture Page Screenshot</arg>
-<arg>ELSE</arg>
-<arg>Capture Page Screenshot</arg>
-<arg>${nombre}</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" start="2025-12-02T16:49:32.586569" elapsed="0.152341"/>
-</kw>
-<arg>carrito_abierto.png</arg>
-<status status="PASS" start="2025-12-02T16:49:32.585570" elapsed="0.153340"/>
-</kw>
-<status status="PASS" start="2025-12-02T16:49:32.483335" elapsed="0.255575"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2025-12-02T16:49:37.739305" level="INFO">Slept 5 seconds.</msg>
-<arg>5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2025-12-02T16:49:32.738910" elapsed="5.000395"/>
-</kw>
-<status status="PASS" start="2025-12-02T16:49:32.147854" elapsed="5.591451"/>
+<status status="PASS" start="2025-12-03T16:29:14.765995" elapsed="0.545394"/>
 </test>
-<kw name="Cerrar Navegador" owner="Navegador" type="TEARDOWN">
-<kw name="Close Browser" owner="SeleniumLibrary">
-<doc>Closes the current browser.</doc>
-<status status="PASS" start="2025-12-02T16:49:37.741318" elapsed="2.100413"/>
+<test id="s1-t2" name="Validar Post Con Comentarios" line="15">
+<kw name="Obtener Post Con Comentarios" owner="UsersAPIFlow">
+<kw name="Obtener Post Por ID" owner="UsersAPI">
+<kw name="Crear Sesion API" owner="UsersAPI">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-12-03T16:29:15.312415" level="INFO">Creating Session using : alias=jsonplaceholder, url=https://jsonplaceholder.typicode.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>jsonplaceholder</arg>
+<arg>${API_BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-12-03T16:29:15.312415" elapsed="0.000000"/>
 </kw>
-<status status="PASS" start="2025-12-02T16:49:37.740315" elapsed="2.101416"/>
+<status status="PASS" start="2025-12-03T16:29:15.312415" elapsed="0.000000"/>
 </kw>
-<status status="PASS" start="2025-12-02T16:49:24.313000" elapsed="15.528731"/>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-12-03T16:29:15.530556" level="INFO">GET Request : url=https://jsonplaceholder.typicode.com/posts/1 
+ path_url=/posts/1 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-12-03T16:29:15.530556" level="INFO">GET Response : url=https://jsonplaceholder.typicode.com/posts/1 
+ status=200, reason=OK 
+ headers={'Date': 'Wed, 03 Dec 2025 19:29:15 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'access-control-allow-credentials': 'true', 'Cache-Control': 'max-age=43200', 'etag': 'W/"124-yiKdLzqO5gfBrJFrcdJ8Yq0LGnU"', 'expires': '-1', 'nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'pragma': 'no-cache', 'report-to': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=jUhUrtWGdMmeztouwkm9J6M%2BxBGFv5cpyEHC%2BnvUGD0%3D\\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\\u0026ts=1752302840"}],"max_age":3600}', 'reporting-endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=jUhUrtWGdMmeztouwkm9J6M%2BxBGFv5cpyEHC%2BnvUGD0%3D&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;ts=1752302840"', 'Server': 'cloudflare', 'vary': 'Origin, Accept-Encoding', 'via': '2.0 heroku-router', 'x-content-type-options': 'nosniff', 'x-powered-by': 'Express', 'x-ratelimit-limit': '1000', 'x-ratelimit-remaining': '999', 'x-ratelimit-reset': '1752302894', 'Age': '5891', 'cf-cache-status': 'HIT', 'Content-Encoding': 'gzip', 'CF-RAY': '9a8578c7cdf58b79-GIG', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={
+  "userId": 1,
+  "id": 1,
+  "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+  "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+} 
+ </msg>
+<msg time="2025-12-03T16:29:15.530556" level="INFO">C:\Users\felip\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'jsonplaceholder.typicode.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-12-03T16:29:15.530556" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>jsonplaceholder</arg>
+<arg>/posts/${post_id}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-12-03T16:29:15.312415" elapsed="0.218141"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-12-03T16:29:15.531557" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-12-03T16:29:15.531557" level="INFO">${json} = {'userId': 1, 'id': 1, 'title': 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit', 'body': 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit...</msg>
+<var>${json}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-12-03T16:29:15.531557" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${json}</value>
+<status status="PASS" start="2025-12-03T16:29:15.531557" elapsed="0.000000"/>
+</return>
+<msg time="2025-12-03T16:29:15.531557" level="INFO">${post} = {'userId': 1, 'id': 1, 'title': 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit', 'body': 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit...</msg>
+<var>${post}</var>
+<arg>${post_id}</arg>
+<status status="PASS" start="2025-12-03T16:29:15.312415" elapsed="0.219142"/>
+</kw>
+<kw name="Obtener Comentarios Por Post" owner="UsersAPI">
+<kw name="Crear Sesion API" owner="UsersAPI">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2025-12-03T16:29:15.532557" level="INFO">Creating Session using : alias=jsonplaceholder, url=https://jsonplaceholder.typicode.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>jsonplaceholder</arg>
+<arg>${API_BASE_URL}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2025-12-03T16:29:15.532557" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-12-03T16:29:15.532557" elapsed="0.000000"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2025-12-03T16:29:15.733574" level="INFO">GET Request : url=https://jsonplaceholder.typicode.com/comments?postId=1 
+ path_url=/comments?postId=1 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-12-03T16:29:15.733574" level="INFO">GET Response : url=https://jsonplaceholder.typicode.com/comments?postId=1 
+ status=200, reason=OK 
+ headers={'Date': 'Wed, 03 Dec 2025 19:29:15 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '657', 'Connection': 'keep-alive', 'access-control-allow-credentials': 'true', 'Cache-Control': 'max-age=43200', 'Content-Encoding': 'gzip', 'etag': 'W/"5e6-4bSPS5tq8F8ZDeFJULWh6upjp7U"', 'expires': '-1', 'nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'pragma': 'no-cache', 'report-to': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=l80z9Co%2B93%2B7qIlTAbi5CqvJjaEPuRAiQK52x1v0aAQ%3D\\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\\u0026ts=1763990360"}],"max_age":3600}', 'reporting-endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=l80z9Co%2B93%2B7qIlTAbi5CqvJjaEPuRAiQK52x1v0aAQ%3D&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;ts=1763990360"', 'Server': 'cloudflare', 'vary': 'Origin, Accept-Encoding', 'via': '2.0 heroku-router', 'x-content-type-options': 'nosniff', 'x-powered-by': 'Express', 'x-ratelimit-limit': '1000', 'x-ratelimit-remaining': '999', 'x-ratelimit-reset': '1763990368', 'Age': '4270', 'Accept-Ranges': 'bytes', 'cf-cache-status': 'HIT', 'CF-RAY': '9a8578c91cd3b026-GRU', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body=[
+  {
+    "postId": 1,
+    "id": 1,
+    "name": "id labore ex et quam laborum",
+    "email": "Eliseo@gardner.biz",
+    "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
+  },
+  {
+    "postId": 1,
+    "id": 2,
+    "name": "quo vero reiciendis velit similique earum",
+    "email": "Jayne_Kuhic@sydney.com",
+    "body": "est natus enim nihil est dolore omnis voluptatem numquam\net omnis occaecati quod ullam at\nvoluptatem error expedita pariatur\nnihil sint nostrum voluptatem reiciendis et"
+  },
+  {
+    "postId": 1,
+    "id": 3,
+    "name": "odio adipisci rerum aut animi",
+    "email": "Nikita@garfield.biz",
+    "body": "quia molestiae reprehenderit quasi aspernatur\naut expedita occaecati aliquam eveniet laudantium\nomnis quibusdam delectus saepe quia accusamus maiores nam est\ncum et ducimus et vero voluptates excepturi deleniti ratione"
+  },
+  {
+    "postId": 1,
+    "id": 4,
+    "name": "alias odio sit",
+    "email": "Lew@alysha.tv",
+    "body": "non et atque\noccaecati deserunt quas accusantium unde odit nobis qui voluptatem\nquia voluptas consequuntur itaque dolor\net qui rerum deleniti ut occaecati"
+  },
+  {
+    "postId": 1,
+    "id": 5,
+    "name": "vero eaque aliquid doloribus et culpa",
+    "email": "Hayden@althea.biz",
+    "body": "harum non quasi et ratione\ntempore iure ex voluptates in ratione\nharum architecto fugit inventore cupiditate\nvoluptates magni quo et"
+  }
+] 
+ </msg>
+<msg time="2025-12-03T16:29:15.733574" level="INFO">C:\Users\felip\AppData\Local\Programs\Python\Python311\Lib\site-packages\urllib3\connectionpool.py:1097: InsecureRequestWarning: Unverified HTTPS request is being made to host 'jsonplaceholder.typicode.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2025-12-03T16:29:15.733574" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>jsonplaceholder</arg>
+<arg>/comments</arg>
+<arg>params=postId=${post_id}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2025-12-03T16:29:15.532557" elapsed="0.201017"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-12-03T16:29:15.733574" elapsed="0.001000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-12-03T16:29:15.734574" level="INFO">${json} = [{'postId': 1, 'id': 1, 'name': 'id labore ex et quam laborum', 'email': 'Eliseo@gardner.biz', 'body': 'laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor q...</msg>
+<var>${json}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-12-03T16:29:15.734574" elapsed="0.000000"/>
+</kw>
+<return>
+<value>${json}</value>
+<status status="PASS" start="2025-12-03T16:29:15.734574" elapsed="0.000000"/>
+</return>
+<msg time="2025-12-03T16:29:15.734574" level="INFO">${comments} = [{'postId': 1, 'id': 1, 'name': 'id labore ex et quam laborum', 'email': 'Eliseo@gardner.biz', 'body': 'laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor q...</msg>
+<var>${comments}</var>
+<arg>${post_id}</arg>
+<status status="PASS" start="2025-12-03T16:29:15.532557" elapsed="0.202017"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-12-03T16:29:15.735574" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${comment["postId"]}</arg>
+<arg>${post_id}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-12-03T16:29:15.734574" elapsed="0.001000"/>
+</kw>
+<var name="${comment}">{'postId': 1, 'id': 1, 'name': 'id labore ex et quam laborum', 'email': 'Eliseo@gardner.biz', 'body': 'laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor qu...</var>
+<status status="PASS" start="2025-12-03T16:29:15.734574" elapsed="0.001000"/>
+</iter>
+<iter>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-12-03T16:29:15.735574" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${comment["postId"]}</arg>
+<arg>${post_id}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-12-03T16:29:15.735574" elapsed="0.000000"/>
+</kw>
+<var name="${comment}">{'postId': 1, 'id': 2, 'name': 'quo vero reiciendis velit similique earum', 'email': 'Jayne_Kuhic@sydney.com', 'body': 'est natus enim nihil est dolore omnis voluptatem numquam\net omnis occaecati quo...</var>
+<status status="PASS" start="2025-12-03T16:29:15.735574" elapsed="0.000000"/>
+</iter>
+<iter>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-12-03T16:29:15.736687" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${comment["postId"]}</arg>
+<arg>${post_id}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-12-03T16:29:15.735574" elapsed="0.001113"/>
+</kw>
+<var name="${comment}">{'postId': 1, 'id': 3, 'name': 'odio adipisci rerum aut animi', 'email': 'Nikita@garfield.biz', 'body': 'quia molestiae reprehenderit quasi aspernatur\naut expedita occaecati aliquam eveniet laudantiu...</var>
+<status status="PASS" start="2025-12-03T16:29:15.735574" elapsed="0.001113"/>
+</iter>
+<iter>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-12-03T16:29:15.736687" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${comment["postId"]}</arg>
+<arg>${post_id}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-12-03T16:29:15.736687" elapsed="0.000000"/>
+</kw>
+<var name="${comment}">{'postId': 1, 'id': 4, 'name': 'alias odio sit', 'email': 'Lew@alysha.tv', 'body': 'non et atque\noccaecati deserunt quas accusantium unde odit nobis qui voluptatem\nquia voluptas consequuntur itaque ...</var>
+<status status="PASS" start="2025-12-03T16:29:15.736687" elapsed="0.000000"/>
+</iter>
+<iter>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2025-12-03T16:29:15.736687" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${comment["postId"]}</arg>
+<arg>${post_id}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2025-12-03T16:29:15.736687" elapsed="0.000000"/>
+</kw>
+<var name="${comment}">{'postId': 1, 'id': 5, 'name': 'vero eaque aliquid doloribus et culpa', 'email': 'Hayden@althea.biz', 'body': 'harum non quasi et ratione\ntempore iure ex voluptates in ratione\nharum architecto fugit...</var>
+<status status="PASS" start="2025-12-03T16:29:15.736687" elapsed="0.001074"/>
+</iter>
+<var>${comment}</var>
+<value>@{comments}</value>
+<status status="PASS" start="2025-12-03T16:29:15.734574" elapsed="0.003187"/>
+</for>
+<return>
+<value>${post}</value>
+<value>${comments}</value>
+<status status="PASS" start="2025-12-03T16:29:15.737761" elapsed="0.000000"/>
+</return>
+<msg time="2025-12-03T16:29:15.737761" level="INFO">${post} = {'userId': 1, 'id': 1, 'title': 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit', 'body': 'quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit...</msg>
+<msg time="2025-12-03T16:29:15.737761" level="INFO">${comments} = [{'postId': 1, 'id': 1, 'name': 'id labore ex et quam laborum', 'email': 'Eliseo@gardner.biz', 'body': 'laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor q...</msg>
+<var>${post}</var>
+<var>${comments}</var>
+<arg>1</arg>
+<status status="PASS" start="2025-12-03T16:29:15.311389" elapsed="0.426372"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Post obtenido: ${post}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-03T16:29:15.737761" elapsed="0.000000"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>Comentarios obtenidos: ${comments}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-12-03T16:29:15.738758" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-12-03T16:29:15.311389" elapsed="0.427369"/>
+</test>
+<status status="PASS" start="2025-12-03T16:29:14.466759" elapsed="1.271999"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="Inventory Tests" id="s1" pass="1" fail="0" skip="0">Inventory Tests</stat>
+<stat name="Users Api Tests" id="s1" pass="2" fail="0" skip="0">Users Api Tests</stat>
 </suite>
 </statistics>
 <errors>

@@ -10,6 +10,40 @@ y este proyecto adhiere a [Versionado Semántico](https://semver.org/spec/v2.0.0
 ### Por Agregar
 - Funcionalidades futuras pendientes
 
+## [1.0.3] - 2025-12-03
+
+### Agregado
+- **Infraestructura completa de API Testing**
+  - resources/api/endpoints/UsersAPI.resource: Keywords para APIs REST
+    - ${API_BASE_URL} configuración para JSONPlaceholder
+    - Keyword "Crear Sesion API" para gestión de sesiones
+    - Keyword "Obtener Lista De Posts" para GET /posts
+    - Keyword "Obtener Post Por ID" para GET /posts/{id}
+    - Keyword "Obtener Comentarios Por Post" para GET /comments?postId={id}
+    - Keyword "Crear Post" para POST /posts con validación 201
+
+  - resources/api/flows/UsersAPIFlow.robot: Flows de negocio para APIs
+    - Flow "Crear Post Y Validar Respuesta" con validaciones de campos
+    - Flow "Obtener Post Con Comentarios" con validación relacional
+    - Validación automática de postId en comentarios con FOR loop
+
+  - tests/api/users_api_tests.robot: Suite de tests REST API
+    - Test "Crear Post Y Validarlo" con logs detallados de validación
+    - Test "Validar Post Con Comentarios" para datos relacionales
+    - Logs informativos con emojis para mejor debugging
+
+### Mejorado  
+- Sintaxis moderna de Robot Framework aplicada a todos los keywords API
+  - Uso de "RETURN" statement en lugar de "[Return]"
+  - Uso de "POST On Session" y "GET On Session" en mayúsculas
+  - Parámetros query con sintaxis "params=" correcta
+  - FOR loops modernos con "FOR...END" en lugar de ":FOR"
+
+### Corregido
+- Query parameters en endpoints API usando "params=" en lugar de URL encoding
+- Validaciones de status HTTP usando "Status Should Be" nativo de RequestsLibrary
+- Conversión JSON usando método nativo "${response.json()}" sin deprecations
+
 ## [1.0.2] - 2025-12-03
 
 ### Agregado
