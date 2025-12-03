@@ -10,6 +10,39 @@ y este proyecto adhiere a [Versionado Semántico](https://semver.org/spec/v2.0.0
 ### Por Agregar
 - Funcionalidades futuras pendientes
 
+## [1.0.2] - 2025-12-03
+
+### Agregado
+- **Funcionalidades de E-commerce completas**
+  - InventoryPage.resource: Variables y keywords para manejo del carrito
+    - ${CART_BADGE} para validar cantidad de productos en carrito
+    - ${ADD_TO_CART_BUTTONS} lista de botones "Add to cart" 
+    - Keyword "Agregar Primeros Tres Productos Al Carrito"
+    - Keyword "Validar Cantidad En Carrito" con argumentos parametrizados
+    - Keyword "Abrir Carrito" con logs informativos
+  
+  - CartPage.resource: Nueva página para validación del carrito
+    - ${CART_TITLE} selector para título "Your Cart"
+    - ${CHECKOUT_BUTTON} selector para botón de checkout
+    - Keyword "Validar Que Cart Esté Lista" con validaciones completas
+
+  - InventoryFlow.robot: Flows de negocio para e-commerce
+    - Flow "Agregar Productos" con validación de badge
+    - Flow "Ir Al Carrito Y Validar" para navegación completa
+    - Logs informativos en cada paso del proceso
+    - Capturas automáticas (productos_agregados.png, carrito_abierto.png)
+
+  - inventory_tests.robot: Suite de tests end-to-end
+    - Test completo desde login hasta validación del carrito
+    - Suite Setup optimizado con navegador único
+    - Flujo E2E: Login → Add Products → Validate Badge → Open Cart → Validate Cart
+
+### Mejorado
+- Logs informativos agregados a todos los flows para mejor debugging
+- Capturas de pantalla manuales en puntos clave del flujo
+- Arquitectura modular extendida con separación clara de responsabilidades
+- Validaciones robustas usando data-test attributes para estabilidad
+
 ## [1.0.1] - 2025-12-02
 
 ### Agregado
